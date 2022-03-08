@@ -9,4 +9,4 @@ const connection = async () => {
     };
 };
 
-connection()
+connection();

@@ -28,8 +28,10 @@ exports.decryptPassword = async (req, res, next) => {
 
 exports.checkToken = async (req, res, next) => {
     try {
-        const token = req.header("Authorization").replace("Bearer ", "");
-        const decodedToken = await jwt.verify(token, process.env.SECRET);
+        const decodedToken = await jwt.verify(
+                req.header("Authorization").replace("Bearer ", ""),
+                token, process.env.SECRET
+             );
         req.user = await User.findById(decodedToken._id);
         if (req.user){
             next();

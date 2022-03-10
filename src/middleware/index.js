@@ -30,8 +30,12 @@ exports.checkToken = async (req, res, next) => {
     try {
         const token = req.header("Authorization").replace("Bearer ", "");
         const decodedToken = await jwt.verify(token, process.env.SECRET);
-        const user = await User.findById();
-        next();
+        req.user = await User.findById(decodedToken._id);
+        if (req.user){
+            next();
+        } else {
+            throw new Error("no user found")
+        }    
     } catch (error) {
         console.log(error);
         res.status(500).send({err: error.message});

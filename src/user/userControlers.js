@@ -21,3 +21,22 @@ exports.login = async (req, res) =>{
         res.status(500).send({err: error.message});
     };
 };
+
+exports.updatePassword = async (req, res) => {
+    try {
+        const updatedUser = await User.updateOne(
+            { username: req.user.username },
+            { password: req.body.password }
+        );
+        if (updatedUser.matchedCount > 0) {
+            res.status(200).send({msg: "Update successfull"});
+        } else {
+            throw new Error("Did not Update");
+        }
+        // req.user
+        // req.body.password
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({err: error.message})
+    }
+};

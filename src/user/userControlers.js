@@ -42,21 +42,21 @@ exports.updatePassword = async (req, res) => {
     }
 };
 
-// exports.deleteUser = async (req, res) => {
-//     try {
-//       const deletedUser = await User.deleteOne({
-//         [req.params.filterKey]: req.params.filterVal,
-//       });
-//       if (deletedUser.deletedCount > 0) {
-//         res.status(200).send({ msg: "Successfully removed User" });
-//       } else {
-//         throw new Error("Did not remove user");
-//       }
-//     } catch (error) {
-//       console.log(error);
-//       res.status(500).send({ err: error.message });
-//     }
-//   };
+exports.deleteUser = async (req, res) => {
+    try {
+      const deletedUser = await User.deleteOne({
+        [req.params.filterKey]: req.params.filterVal,
+      });
+      if (deletedUser.deletedCount > 0) {
+        res.status(200).send({ msg: "Successfully removed User" });
+      } else {
+        throw new Error("Did not remove user");
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({ err: error.message });
+    }
+  };
 
 // exports.deleteUser = async (req, res) =>{
 //     try {

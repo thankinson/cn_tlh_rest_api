@@ -36,8 +36,7 @@ exports.updateMovie = async (req, res) => {
 exports.deleteMovie = async (req, res) => {
     try {
         const remove = await Movie.deleteOne(
-            //{title: req.body.title} this dose not work on full stack
-            {[req.param.filterKey]: req.param.deleteVal}
+            {[req.params.filterKey]: req.params.deleteVal}
             )
         res.status(200).send({remove: remove})
     } catch (error) {

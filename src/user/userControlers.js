@@ -14,8 +14,7 @@ exports.addUser = async (req, res) => {
 
 exports.login = async (req, res) =>{
     try {
-        // const token = await jwt.sign({_id: req.user._id}, process.env.SECRET)
-        // const user = await User.findOne({ username: req.body.username});
+        const token = await jwt.sign({_id: req.user._id}, process.env.SECRET)
         res.status(200).send({ user: req.user.username, token});
     } catch (error) {
         console.log(error);

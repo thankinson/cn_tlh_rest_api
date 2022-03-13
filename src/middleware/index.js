@@ -30,7 +30,7 @@ exports.checkToken = async (req, res, next) => {
     try {
         const decodedToken = await jwt.verify(
                 req.header("Authorization").replace("Bearer ", ""),
-                process.env.SECRET
+                token, process.env.SECRET
              );
         req.user = await User.findById(decodedToken._id);
         if (req.user){

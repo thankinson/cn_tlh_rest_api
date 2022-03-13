@@ -5,5 +5,5 @@ const movieRouter = Router();
 movieRouter.post("/movie", addMovie);
 movieRouter.get("/movie", listMovie); // get dose not recive body - has no body - same with delete
 movieRouter.patch("/movie", updateMovie);
-movieRouter.delete("/movie/:filterKey/:flterVal", deleteMovie);
+movieRouter.delete("/movie", deleteMovie);
 module.exports = movieRouter;

@@ -23,8 +23,8 @@ exports.listMovie = async (req, res) => {
 exports.updateMovie = async (req, res) => {
     try {
         const movies = await Movie.updateOne(
-           { [req.param.filterKey]: req.param.filterVal },
-           { [req.param.updateKey]: req.param.updateVal } 
+           { [req.body.filterKey]: req.body.filterVal },
+           { [req.body.updateKey]: req.body.updateVal } 
         );
         res.status(200).send({update: movies});
     } catch (error) {

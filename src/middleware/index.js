@@ -28,11 +28,14 @@ exports.decryptPassword = async (req, res, next) => {
 
 exports.checkToken = async (req, res, next) => {
     try {
+        console.log(req.body)
         const decodedToken = await jwt.verify(
-                req.header("Authorization").replace("Bearer ", ""),
-                token, process.env.SECRET
+                    req.header("Authorization").replace("Bearer ", ""),
+                 process.env.SECRET
              );
+             console.log(decodedToken)
         req.user = await User.findById(decodedToken._id);
+        console.log(req.user)
         if (req.user){
             next();
         } else {

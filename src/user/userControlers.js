@@ -22,9 +22,9 @@ exports.login = async (req, res) =>{
     };
 };
 
-
 exports.updatePassword = async (req, res) => {
     try {
+        console.log("hit updatePass 1")
         const updatedUser = await User.updateOne(
             { username: req.user.username },
             { password: req.body.password }
